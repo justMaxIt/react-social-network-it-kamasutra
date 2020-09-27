@@ -7,7 +7,7 @@ const Post = (props) => {
       <img src="https://leadslive.io/wp-content/uploads/2017/05/Miniclip-8-Ball-Pool-Avatar-11.png" />
       {props.message}
       <div>
-        <span>like</span>
+        <span>like {props.likeCount}</span>
       </div>
     </div>
   );
