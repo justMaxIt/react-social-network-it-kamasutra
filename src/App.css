@@ -9,5 +9,7 @@
 
 .app-wrapper-content {
   grid-area: c;
-  background-color: lightskyblue;
+  background-color: #e8e8e8;
+  /* margin: 2px;
+  border-radius: 5px; */
 }
