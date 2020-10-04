@@ -14,3 +14,37 @@
 .item a.activeLink {
   color: #7a0908;
 }
+
+.friends {
+  margin-top: 80px;
+}
+
+.friends .articleFriends {
+  color: #fff;
+  font-size: 2em;
+}
+
+.friends .iconsFriends {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.itemFriends {
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #fff;
+  font-size: small;
+}
+
+.itemFriends img {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+}
+
+.friendName {
+  display: flex;
+  justify-content: center;
+}
