@@ -12,6 +12,11 @@
   color: #1d1d1d;
 }
 
+.dialogs .dialogsItems .dialog img {
+  width: 50px;
+  border-radius: 30px;
+}
+
 /* .dialogs .dialogsItems .active a {
   color: #204369;
 } */
@@ -20,5 +25,4 @@
   padding: 10px;
 }
 
-.messages .message {
-}
+.messages .message {}
