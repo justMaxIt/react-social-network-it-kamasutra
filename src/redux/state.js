@@ -25,6 +25,7 @@ let state = {
       { id: "4", message: "yo" },
       { id: "5", message: "yo" },
     ],
+    newTextMes: "Handsome",
   },
   sidebar: [
     {
@@ -59,4 +60,20 @@ export let updateNewPostText = (newText) => {
   state.profilePage.newPostText = newText;
   rerenderEntireTree(state);
 };
+
+export let addMes = () => {
+  let newMes = {
+    id: 6,
+    message: state.dialogsPage.newTextMes,
+  };
+  state.dialogsPage.messages.push(newMes);
+  state.dialogsPage.newTextMes = "";
+  rerenderEntireTree(state);
+};
+
+export let updateNewMes = (text) => {
+  state.dialogsPage.newTextMes = text;
+  rerenderEntireTree(state);
+};
+
 export default state;

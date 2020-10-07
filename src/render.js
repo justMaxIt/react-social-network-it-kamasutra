@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { addPost, updateNewPostText } from "./redux/state";
+import { addMes, updateNewMes } from "./redux/state";
 import { BrowserRouter } from "react-router-dom";
 
 export let rerenderEntireTree = (state) => {
@@ -14,6 +15,8 @@ export let rerenderEntireTree = (state) => {
           state={state}
           addPost={addPost}
           updateNewPostText={updateNewPostText}
+          addMes={addMes}
+          updateNewMes={updateNewMes}
         />
       </React.StrictMode>
     </BrowserRouter>,
