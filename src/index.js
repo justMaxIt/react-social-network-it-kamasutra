@@ -3,14 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import {
-  addPost,
-  updateNewPostText,
-  addMes,
-  updateNewMes,
-  subscribe,
-} from "./redux/state";
-import state from "./redux/state";
+import store from "./redux/state";
 import { BrowserRouter } from "react-router-dom";
 
 let rerenderEntireTree = (state) => {
@@ -19,16 +12,16 @@ let rerenderEntireTree = (state) => {
       <React.StrictMode>
         <App
           state={state}
-          addPost={addPost}
-          updateNewPostText={updateNewPostText}
-          addMes={addMes}
-          updateNewMes={updateNewMes}
+          addPost={store.addPost.bind(store)}
+          updateNewPostText={store.updateNewPostText.bind(store)}
+          addMes={store.addMes.bind(store)}
+          updateNewMes={store.updateNewMes.bind(store)}
         />
       </React.StrictMode>
     </BrowserRouter>,
     document.getElementById("root")
   );
 };
-rerenderEntireTree(state);
-subscribe(rerenderEntireTree);
+rerenderEntireTree(store.getState());
+store.subscribe(rerenderEntireTree);
 serviceWorker.unregister();
