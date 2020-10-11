@@ -44,14 +44,18 @@ let store = {
       },
     ],
   },
+   _callSubscriber() {
+    console.log("hello");
+  },
   getState() {
     return this._state;
   },
-  _callSubscriber() {
-    console.log("hello");
+subscribe(observer) {
+    this._callSubscriber = observer;
   },
-  addPost() {
-    let newPost = {
+dispatch(action) {
+    if (action.type === "ADD-POST") {
+      let newPost = {
       id: 5,
       message: this._state.profilePage.newPostText,
       likesCount: 0,
@@ -59,27 +63,24 @@ let store = {
     this._state.profilePage.posts.push(newPost);
     this._state.profilePage.newPostText = "";
     this._callSubscriber(this._state);
-  },
-  updateNewPostText(newText) {
-    this._state.profilePage.newPostText = newText;
+    }
+    else if (action.type === "UPDATE-NEW-POST-TEXT") {
+      this._state.profilePage.newPostText = action.newText;
     this._callSubscriber(this._state);
-  },
-  addMes() {
-    let newMes = {
+    }
+    else if (action.type === "ADD-MES") {
+      let newMes = {
       id: 6,
       message: this._state.dialogsPage.newTextMes,
     };
     this._state.dialogsPage.messages.push(newMes);
     this._state.dialogsPage.newTextMes = "";
     this._callSubscriber(this._state);
-  },
-  updateNewMes(text) {
-    this._state.dialogsPage.newTextMes = text;
-    this._callSubscriber(this._state);
-  },
-  subscribe(observer) {
-    this._callSubscriber = observer;
-  },
+    }
+    else if (action.type === "UPDATE-NEW-MES") {
+    this._state.dialogsPage.newTextMes = action.text;
+    this._callSubscriber(this._state);}
+  }
 };
 
 export default store;

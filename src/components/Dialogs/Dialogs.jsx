@@ -13,11 +13,11 @@ const Dialogs = (props) => {
   ));
   let newMessageElement = React.createRef();
   let addMes = () => {
-    props.addMes();
+    props.dispatch({type: "ADD-MES"});
   };
   let onMesChange = () => {
     let text = newMessageElement.current.value;
-    props.updateNewMes(text);
+    props.dispatch({type: "UPDATE-NEW-MES", text: text});
   };
 
   return (
