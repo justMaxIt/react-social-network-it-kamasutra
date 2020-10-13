@@ -12,7 +12,7 @@ let store = {
         { id: "3", message: "third", likesCount: "2" },
         { id: "4", message: "fourth", likesCount: "5" },
       ],
-      newPostText: "success 2020",
+      newPostText: "Handsome",
     },
     dialogsPage: {
       dialogs: [
@@ -29,7 +29,7 @@ let store = {
         { id: "4", message: "yo" },
         { id: "5", message: "yo" },
       ],
-      newTextMes: "Handsome",
+      newTextMes: "",
     },
     sidebar: [
       {

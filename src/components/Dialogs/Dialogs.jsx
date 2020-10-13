@@ -5,40 +5,43 @@ import Message from "./Message/Message";
 import { addMesActionCreator, updateNewMesActionCreator } from "./../../redux/state"
 
 const Dialogs = (props) => {
-  let dialogsElements = props.dialogsPage.dialogs.map((d) => (
+
+  let state= props.store.getState().dialogsPage
+  let dialogsElements = state.dialogs.map((d) => (
     <DialogItem name={d.name} id={d.id} />
   ));
 
-  let messagesElements = props.dialogsPage.messages.map((m) => (
+  let messagesElements = state.messages.map((m) => (
     <Message message={m.message} />
   ));
-  let newMessageElement = React.createRef();
+ 
 
 
 
 
 
   let addMes = () => {
-    props.dispatch(addMesActionCreator());
+    props.store.dispatch(addMesActionCreator());
   };
-  let onMesChange = () => {
-    let text = newMessageElement.current.value;
+  let onMesChange = (e) => {
+    let text = e.target.value;
     let action = updateNewMesActionCreator(text);
-    props.dispatch(action)
+    props.store.dispatch(action)
   };
 
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>{dialogsElements}</div>
       <div className={s.messages}>
-        {messagesElements}
+       {messagesElements}
         <h3>New message</h3>
         <div>
           <div>
             <textarea
+
+              placeholder="Enter your message"
               onChange={onMesChange}
-              ref={newMessageElement}
-              value={props.dialogsPage.newTextMes}
+               value={state.newTextMes}
             />
           </div>
           <div>
