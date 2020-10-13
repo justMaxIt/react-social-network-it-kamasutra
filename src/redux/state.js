@@ -1,5 +1,8 @@
 const ADD_POST = "ADD-POST"
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT"
+const ADD_MES = "ADD-MES"
+const UPDATE_NEW_MES = "UPDATE-NEW-MES"
+
 let store = {
   _state: {
     profilePage: {
@@ -86,7 +89,11 @@ dispatch(action) {
 };
 export const addPostActionCreator = () => ({type: ADD_POST})
 export const updateNewPostTextActionCreator = (newText) =>
-  ({type: UPDATE_NEW_POST_TEXT, newText: newText})
+  ({ type: UPDATE_NEW_POST_TEXT, newText: newText })
+export const addMesActionCreator = () => ({type: ADD_MES})
+export const updateNewMesActionCreator = (text) =>
+  ({type: UPDATE_NEW_MES, text: text})  
+
 
 export default store;
 window.store = store;
