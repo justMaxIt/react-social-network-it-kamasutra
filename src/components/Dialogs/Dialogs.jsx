@@ -15,11 +15,6 @@ const Dialogs = (props) => {
     <Message message={m.message} />
   ));
  
-
-
-
-
-
   let addMes = () => {
     props.store.dispatch(addMesActionCreator());
   };

@@ -27,8 +27,7 @@ const App = (props) => {
           render={() => (
             <Dialogs
               store={props.store} 
-       
-            />
+                   />
           )}
         />
         <Route path="/news" />
