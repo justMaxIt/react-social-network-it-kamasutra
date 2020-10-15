@@ -1,6 +1,4 @@
-import React, { createRef } from "react";
-import s from "./MyPosts.module.css";
-import Post from "./Post/Post";
+import React from "react";
 import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../redux/profileReducer"
 import MyPosts from "./MyPosts";
 
@@ -8,17 +6,17 @@ import MyPosts from "./MyPosts";
 const MyPostsContainer = (props) => {
 
   let addPost = () => {
-    props.dispatch(addPostActionCreator());
+    props.store.dispatch(addPostActionCreator())
   };
 
   let onPostChange = (text) => {
   let action = updateNewPostTextActionCreator(text)
-  props.dispatch(action)
+  props.store.dispatch(action)
   };
 
 
   return (
-    <MyPosts updateNewPostText={onPostChange} addPost={addPost}/>
+    <MyPosts updateNewPostText={onPostChange} addPost={addPost} posts={props.posts}/>
   );
 };
 export default MyPostsContainer;
