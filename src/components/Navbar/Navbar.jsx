@@ -4,8 +4,9 @@ import Friends from "./Friends/Friends";
 import s from "./Navbar.module.css";
 
 const Navbar = (props) => {
+ 
   return (
-    <nav className={s.nav}>
+        <nav className={s.nav}>
       <div className={s.links}>
         <div className={s.item}>
           <NavLink to="/profile" activeClassName={s.activeLink}>
