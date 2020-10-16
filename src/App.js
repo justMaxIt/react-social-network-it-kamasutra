@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-
 import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
@@ -17,19 +16,13 @@ const App = (props) => {
         <Route
           path="/profile"
           render={() => (
-            <Profile
-              store={props.store}
-              profilePage={props.state.profilePage}
-              dispatch={props.dispatch}
-                         />
+            <Profile />
           )}
         />
         <Route
           path="/dialogs"
           render={() => (
-            <DialogsContainer
-              store={props.store} 
-                   />
+            <DialogsContainer />
           )}
         />
         <Route path="/news" />
