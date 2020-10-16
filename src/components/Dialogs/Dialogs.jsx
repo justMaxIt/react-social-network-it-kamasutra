@@ -5,8 +5,7 @@ import Message from "./Message/Message";
 import { addMesActionCreator, updateNewMesActionCreator } from "../../redux/dialogsReducer"
 
 const Dialogs = (props) => {
-
-  let state= props.store.getState().dialogsPage
+let state= props.dialogsPage
   let dialogsElements = state.dialogs.map((d) => (
     <DialogItem name={d.name} id={d.id} />
   ));
@@ -16,12 +15,14 @@ const Dialogs = (props) => {
   ));
  
   let addMes = () => {
-    props.store.dispatch(addMesActionCreator());
+    props.addMes();
   };
   let onMesChange = (e) => {
     let text = e.target.value;
-    let action = updateNewMesActionCreator(text);
-    props.store.dispatch(action)
+    props.updateNewMes(text)
+    // let action = updateNewMesActionCreator(text);
+    // props.store.dispatch(action)
+    
   };
 
   return (
