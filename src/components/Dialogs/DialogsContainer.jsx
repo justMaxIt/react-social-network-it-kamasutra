@@ -1,26 +1,24 @@
 import React from "react";
 import { addMesActionCreator, updateNewMesActionCreator } from "../../redux/dialogsReducer"
 import Dialogs from "./Dialogs";
-import StoreContext from "../../StoreContext";
+import { connect } from "react-redux";
 
-const DialogsContainer = () => {
-  return (
-    <StoreContext.Consumer> 
-      {
-      (store) => {
-  let state = store.getState().dialogsPage
-   
-  let addMes = () => {
-    store.dispatch(addMesActionCreator());
-        };
-        
-  let onMesChange = (text) => {
+let mapStateToProps = (state) => {
+  return {
+    dialogsPage: state.dialogsPage
+  }
+}
+let mapDispatchToProps = (dispatch) => {
+  return {
+    addMes: () => {
+    dispatch(addMesActionCreator())
+    },
+    updateNewMes: (text) => {
     let action = updateNewMesActionCreator(text);
-    store.dispatch(action)
-  };
-     return (   <Dialogs updateNewMes={onMesChange} addMes={addMes} dialogsPage={state} />)
-      }}
-    </StoreContext.Consumer>
-      )};
+    dispatch(action)
+    }
+  }
+}
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
 
 export default DialogsContainer;
