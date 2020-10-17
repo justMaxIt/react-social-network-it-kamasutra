@@ -3,19 +3,20 @@ import { addPostActionCreator, updateNewPostTextActionCreator } from "../../../r
 import StoreContext from "../../../StoreContext";
 import MyPosts from "./MyPosts";
 
-const MyPostsContainer = (props) => {
+const MyPostsContainer = () => {
   return (
-    <StoreContext.Consumer> {
+    <StoreContext.Consumer> 
+      {
       (store) => {
-        let state = props.store.getState();
+        let state = store.getState();
 
   let addPost = () => {
-    props.store.dispatch(addPostActionCreator())
+    store.dispatch(addPostActionCreator())
   };
 
   let onPostChange = (text) => {
   let action = updateNewPostTextActionCreator(text)
-  props.store.dispatch(action)
+  store.dispatch(action)
   };
         return (
           <MyPosts

@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import { addMesActionCreator, updateNewMesActionCreator } from "../../redux/dialogsReducer"
+
 
 const Dialogs = (props) => {
 let state= props.dialogsPage
@@ -20,10 +20,9 @@ let state= props.dialogsPage
   let onMesChange = (e) => {
     let text = e.target.value;
     props.updateNewMes(text)
+  }
     // let action = updateNewMesActionCreator(text);
-    // props.store.dispatch(action)
-    
-  };
+    // props.store.dispatch(action)  };
 
   return (
     <div className={s.dialogs}>
