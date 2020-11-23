@@ -8,7 +8,17 @@ class Users extends React.Component {
                 this.props.setUsers(response.data.items)
             })}
     render() {
-        return <div>
+
+let pagesCount = this.props.totalUsersCount / this.props.pageSize
+        let pages = []
+        for (let i = 1; i <= pagesCount; i++){
+            pages.push(i)
+        }
+            
+            return <div>
+                <div>
+                    {pages.map(p => <span className={true && styles.selectedPage}>{p}</span>)}
+                </div>
         {this.props.users.map(u => <div key={u.id}>
             <span>
                 <div><img src={u.photos.small != null ? u.photos.small :  userPhoto } className={styles.userPhoto}/></div>  
