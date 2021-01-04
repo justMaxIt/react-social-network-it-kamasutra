@@ -46,11 +46,14 @@ let Users = (props) => {
                         `https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
                         {
                           withCredentials: true,
+                          headers: {
+                            "API-KEY": "619b1ce3-a907-4252-bd76-a690bdde4068",
+                          },
                         }
                       )
                       .then((response) => {
                         if (response.data.resultCode == 0) {
-                          props.follow(u.id);
+                          props.unfollow(u.id);
                         }
                       });
                   }}
@@ -66,6 +69,9 @@ let Users = (props) => {
                         {},
                         {
                           withCredentials: true,
+                          headers: {
+                            "API-KEY": "619b1ce3-a907-4252-bd76-a690bdde4068",
+                          },
                         }
                       )
                       .then((response) => {
