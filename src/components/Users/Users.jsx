@@ -34,6 +34,7 @@ let Users = (props) => {
                 <img
                   src={u.photos.small != null ? u.photos.small : userPhoto}
                   className={styles.userPhoto}
+                  alt="img"
                 />
               </NavLink>
             </div>
@@ -52,7 +53,7 @@ let Users = (props) => {
                         }
                       )
                       .then((response) => {
-                        if (response.data.resultCode == 0) {
+                        if (response.data.resultCode === 0) {
                           props.unfollow(u.id);
                         }
                       });
@@ -75,7 +76,7 @@ let Users = (props) => {
                         }
                       )
                       .then((response) => {
-                        if (response.data.resultCode == 0) {
+                        if (response.data.resultCode === 0) {
                           props.follow(u.id);
                         }
                       });

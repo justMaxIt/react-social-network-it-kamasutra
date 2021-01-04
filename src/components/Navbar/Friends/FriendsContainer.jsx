@@ -1,16 +1,15 @@
-import React from "react";
 import { connect } from "react-redux";
 import Friends from "./Friends";
 
 let mapStateToProps = (state) => {
   return {
-    state: state.sidebar.sidebar
-  }
-}
+    state: state.sidebar.sidebar,
+  };
+};
 let mapDispatchToProps = (dispatch) => {
-  return {   }
-}
+  return {};
+};
 
-const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends)
+const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends);
 
 export default FriendsContainer;
