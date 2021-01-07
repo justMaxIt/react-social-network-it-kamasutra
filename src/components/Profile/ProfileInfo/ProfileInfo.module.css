@@ -1,6 +1,6 @@
-.mountain img {
+.topImg img {
   width: 100%;
-  height: 180px;
+  height: 120px;
 }
 
 .descriptionBlock {
@@ -9,8 +9,11 @@
   display: flex;
 }
 
-userInformation 
 .descriptionBlock img {
   width: 200px;
   float: left;
+}
+
+.userInformation {
+  padding: 10px;
 }

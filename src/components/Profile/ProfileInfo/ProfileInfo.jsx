@@ -9,7 +9,7 @@ const ProfileInfo = (props) => {
   console.log(props);
   return (
     <div>
-      <div className={s.mountain}>
+      <div className={s.topImg}>
         <img
           src="https://sun9-32.userapi.com/impf/c840726/v840726099/4a2d9/MtJq_SzHBfs.jpg?size=807x188&quality=96&sign=d31c730e64c6a4a37c095583b7f79dc1&type=album"
           alt="img"
