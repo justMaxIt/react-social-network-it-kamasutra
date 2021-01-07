@@ -6,14 +6,22 @@ const ProfileInfo = (props) => {
   if (!props.profile) {
     return <Preloader />;
   }
+  console.log(props);
   return (
     <div>
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQbTpHdtV8eT5v6ZN1XDJkUMA7R_jVw1wiNeQ&usqp=CAU"
-        alt="img"
-      ></img>
+      <div className={s.mountain}>
+        <img
+          src="https://sun9-32.userapi.com/impf/c840726/v840726099/4a2d9/MtJq_SzHBfs.jpg?size=807x188&quality=96&sign=d31c730e64c6a4a37c095583b7f79dc1&type=album"
+          alt="img"
+        ></img>
+      </div>
       <div className={s.descriptionBlock}>
-        <img src={props.profile.photos.large} alt="img" />+ description
+        <img src={props.profile.photos.large} alt="img" />
+        <div className={s.userInformation}>
+          <h3>{props.profile.fullName}</h3>
+
+          <div>About me: {props.profile.aboutMe}</div>
+        </div>
       </div>
     </div>
   );
