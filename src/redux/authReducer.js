@@ -28,15 +28,13 @@ export const setAuthUserData = (userId, email, login) => ({
   data: { userId, email, login },
 });
 
-export const subscribeM = () => {
-  return (dispatch) => {
-    usersAPI.subscribeMe().then((data) => {
-      if (data.resultCode === 0) {
-        let { id, email, login } = data.data;
-        dispatch(setAuthUserData(id, email, login));
-      }
-    });
-  };
+export const subscribeM = () => (dispatch) => {
+  usersAPI.subscribeMe().then((data) => {
+    if (data.resultCode === 0) {
+      let { id, email, login } = data.data;
+      dispatch(setAuthUserData(id, email, login));
+    }
+  });
 };
 
 export default authReducer;

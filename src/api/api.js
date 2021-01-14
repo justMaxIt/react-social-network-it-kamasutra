@@ -21,7 +21,7 @@ export const usersAPI = {
       return response.data;
     });
   },
-  getProfile(userId) {
+  getProfile(userId = 2) {
     return instance.get(`profile/${userId}`);
   },
 };
