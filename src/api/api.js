@@ -16,6 +16,11 @@ export const usersAPI = {
         return response.data;
       });
   },
+  subscribeMe() {
+    return instance.get(`auth/me`).then((response) => {
+      return response.data;
+    });
+  },
 };
 
 export const followAPI = {
