@@ -21,6 +21,9 @@ export const usersAPI = {
       return response.data;
     });
   },
+  getProfile(userId) {
+    return instance.get(`profile/${userId}`);
+  },
 };
 
 export const followAPI = {
