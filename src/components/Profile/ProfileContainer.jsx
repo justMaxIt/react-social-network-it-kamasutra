@@ -14,6 +14,7 @@ class ProfileContainer extends Component {
       userId = 2;
     }
     this.props.getUserProfile(userId);
+    this.props.getUserStatus(userId);
   }
   render() {
     return (
@@ -26,6 +27,7 @@ class ProfileContainer extends Component {
 
 let mapStateToProps = (state) => ({
   profile: state.profilePage.profile,
+  status: state.profilePage.status,
 });
 
 export default compose(
