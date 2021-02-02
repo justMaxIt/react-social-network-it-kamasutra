@@ -1,4 +1,4 @@
-import { usersAPI } from "./../api/api";
+import { usersAPI, profileAPI } from "./../api/api";
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 const SET_USER_PROFILE = "SET-USER-PROFILE";
@@ -73,5 +73,20 @@ export const getUserProfile = (userId) => {
     });
   };
 };
-
+export const getStatus = (userId) => {
+  return (dispatch) => {
+    profileAPI.getStatus(userId).then((response) => {
+      dispatch(setStatus(response.data));
+    });
+  };
+};
+export const updateStatus = (status) => {
+  return (dispatch) => {
+    profileAPI.updateStatus(status).then((response) => {
+      if (response.data.resultCode === 0) {
+        dispatch(setStatus(status));
+      }
+    });
+  };
+};
 export default profileReducer;
