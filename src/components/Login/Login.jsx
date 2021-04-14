@@ -3,6 +3,9 @@ import { Field, reduxForm } from "redux-form";
 
 const LoginForm = (props) => {
   return (<form onSubmit={props.handleSubmit}>
+     {/* e.preventDefault
+     get all form data and put them to object
+     props.onSubmit(formData) */}
   <div>
     <Field placeholder={"Login"} name={"login"} component={"input"}/>
   </div>
