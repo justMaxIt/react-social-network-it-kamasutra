@@ -14,16 +14,9 @@ const Dialogs = (props) => {
   let messagesElements = state.messages.map((m) => (
     <Message message={m.message} key={m.id} />
   ));
-
-  let addMes = () => {
-    props.addMes();
-  };
-  let onMesChange = (e) => {
-    let text = e.target.value;
-    props.updateNewMes(text);
-  };
+  
   let addNewMessage = (values) => {
-    alert(values.newTextMes)
+     props.addMes(values.newTextMes)
   };
 
   if (!props.isAuth) return <Redirect to={"/login"} />;
@@ -45,11 +38,6 @@ const AddMessageForm = (props) =>{
     <form onSubmit={props.handleSubmit}>
     <div>
       <Field component="textarea" name="newTextMes" placeholder="Enter your message" />
-      {/* <textarea
-        placeholder="Enter your message"
-        onChange={onMesChange}
-        value={state.newTextMes}
-      /> */}
     </div>
     <div>
       <button>Add message</button>
