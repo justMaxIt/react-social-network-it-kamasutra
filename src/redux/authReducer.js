@@ -28,7 +28,16 @@ export const setAuthUserData = (userId, email, login) => ({
   data: { userId, email, login },
 });
 
-export const subscribeM = () => (dispatch) => {
+export const getAuthUserData = () => (dispatch) => {
+  usersAPI.subscribeMe().then((data) => {
+    if (data.resultCode === 0) {
+      let { id, email, login } = data.data;
+      dispatch(setAuthUserData(id, email, login));
+    }
+  });
+};
+
+export const login = (email, password, rememberMe) => (dispatch) => {
   usersAPI.subscribeMe().then((data) => {
     if (data.resultCode === 0) {
       let { id, email, login } = data.data;
