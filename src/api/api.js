@@ -16,11 +16,11 @@ export const usersAPI = {
         return response.data;
       });
   },
-  subscribeMe() {
-    return instance.get(`auth/me`).then((response) => {
-      return response.data;
-    });
-  },
+  // subscribeMe() {
+  //   return instance.get(`auth/me`).then((response) => {
+  //     return response.data;
+  //   });
+  // },
   getProfile(userId = 2) {
     console.warn("Obsolete method. Please use profileAPi object");
     return profileAPI.getProfile(userId);
@@ -54,8 +54,8 @@ export const followAPI = {
 
 export const authAPI = {
 subscribeMe() {
-  return instance.get(`auth/me`);
-  // .then((response) => { return response.data});
+  return instance.get(`auth/me`)
+  .then((response) => { return response.data});
 },
 login(email, password, rememberMe = false){
   return instance.post(`auth/login`, {email, password, rememberMe});
