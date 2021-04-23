@@ -42,8 +42,8 @@ export const login = (email, password, rememberMe) => (dispatch) => {
     if (data.resultCode === 0) {
       dispatch(getAuthUserData());
     } else {
-      let action = stopSubmit("login", {_error: "Email is wrong"});
-      dispatch(action)
+      // let message = response
+      dispatch(stopSubmit("login", {_error: "Common error"}));
     }
   });
 };
