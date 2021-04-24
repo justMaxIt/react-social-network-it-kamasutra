@@ -2,14 +2,22 @@ import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import ProfileContainer from "./components/Profile/ProfileContainer";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
+import { Component } from "react";
+import { connect } from "react-redux";
+import { getAuthUserData } from "./redux/authReducer";
+import { compose } from "redux";
 
-const App = (props) => {
-  return (
+class App extends Component  {
+  componentDidMount() {
+    this.props.getAuthUserData();
+  }
+  render () {
+    return (
     <div className="app-wrapper">
       <HeaderContainer />
       <Navbar />
@@ -25,6 +33,8 @@ const App = (props) => {
       </div>
     </div>
   );
-};
+}}
+export default compose(
+   withRouter, 
+   connect(null, { getAuthUserData }))(App);
 
-export default App;
