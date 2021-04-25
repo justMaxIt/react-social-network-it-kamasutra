@@ -9,12 +9,12 @@ import HeaderContainer from "./components/Header/HeaderContainer";
 import Login from "./components/Login/Login";
 import { Component } from "react";
 import { connect } from "react-redux";
-import { getAuthUserData } from "./redux/authReducer";
+import {initializeApp } from "./redux/appReducer";
 import { compose } from "redux";
 
 class App extends Component  {
   componentDidMount() {
-    this.props.getAuthUserData();
+    this.props.initializeApp();
   }
   render () {
     return (
@@ -36,5 +36,5 @@ class App extends Component  {
 }}
 export default compose(
    withRouter, 
-   connect(null, { getAuthUserData }))(App);
+   connect(null, { initializeApp }))(App);
 
