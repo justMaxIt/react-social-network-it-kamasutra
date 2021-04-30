@@ -1,33 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 
 
 const ProfileStatusWithHooks = (props) => {
-  // state = {
-  //   editMode: false,
-  //   status: this.props.status,
-  // };
-  // activateEditMode = () => {
-  //   this.setState({ editMode: true });
-  // };
-  // deActivateEditMode = () => {
-  //   this.setState({ editMode: false });
-  //   this.props.updateStatus(this.state.status);
-  // };
+  let [editMode, setEditMode] = useState(false)
 
-  // onStatusChange = (e) => {
-  //   this.setState({ status: e.currentTarget.value });
-  // };
+let activateEditMode = ()=> {
+  setEditMode(true)
+}
 
       return (
       <>
-        {true && (
+        {!editMode && (
           <div>
-            <span>
+            <span onDoubleClick={activateEditMode}>
               {props.status || "-----"}
             </span>
           </div>
         )}
-        {false && (
+        {editMode && (
           <div>
             <input
              
