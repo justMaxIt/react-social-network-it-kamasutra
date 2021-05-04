@@ -1,4 +1,4 @@
-import profileReducer,{ addPostActionCreator }  from "./profileReducer";
+import profileReducer,{ addPostActionCreator, deletePost }  from "./profileReducer";
 // import React from 'react';
 // import { render } from '@testing-library/react';
 
@@ -23,14 +23,29 @@ test('posts length should be incremented', () => {
 });
 
 test('new post message should be correct', () => {
-
   // 1. test start data
   let action = addPostActionCreator("It works!")
-  
-    // 2. action
+      // 2. action
   let newState = profileReducer(state, action)
-
   // 3. expectation
   expect(newState.posts[4].message).toBe("It works!")
+});
+
+test('after deleting posts length should be decremented', () => {
+  // 1. test start data
+  let action = deletePost(1)
+      // 2. action
+  let newState = profileReducer(state, action)
+  // 3. expectation
+  expect(newState.posts.length).toBe(3)
+});
+
+test('after deleting length should be the same if id is incorrect', () => {
+  // 1. test start data
+  let action = deletePost(1000)
+      // 2. action
+  let newState = profileReducer(state, action)
+  // 3. expectation
+  expect(newState.posts.length).toBe(4)
 });
 
