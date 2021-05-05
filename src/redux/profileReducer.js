@@ -65,13 +65,11 @@ export const deletePost = (postId) => ({
   postId,
 });
 
-export const getUserProfile = (userId) => {
-  return (dispatch) => {
-    usersAPI.getProfile(userId).then((response) => {
+export const getUserProfile = (userId) => async (dispatch) => {
+    let response = await usersAPI.getProfile(userId);
       dispatch(setUserProfile(response.data));
-    });
   };
-};
+
 export const getStatus = (userId) => {
   return (dispatch) => {
     profileAPI.getStatus(userId).then((response) => {
