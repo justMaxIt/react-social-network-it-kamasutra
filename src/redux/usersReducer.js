@@ -92,37 +92,36 @@ export const toggleFollowingProgress = (isFetching, userId) => ({
 });
 
 export const requestUsers = (page, pageSize) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(toggleIsFetching(true));
     dispatch(setCurrentPage(page));
-    usersAPI.getUsers(page, pageSize).then((data) => {
+
+  let data = await usersAPI.getUsers(page, pageSize);
       dispatch(toggleIsFetching(false));
       dispatch(setUsers(data.items));
       dispatch(setTotalUsersCount(data.totalCount));
-    });
   };
 };
+// function for refactor 90 lesson 15-22 minutes. repiting code is handled to variable
+const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
+  dispatch(toggleFollowingProgress(true, userId));
+  let data =  await apiMethod(userId);
+      if (data.resultCode === 0) { dispatch(actionCreator(userId))}
+      dispatch(toggleFollowingProgress(false, userId));
+}
 
 export const follow = (userId) => {
-  return (dispatch) => {
-    dispatch(toggleFollowingProgress(true, userId));
-    followAPI.follow(userId).then((data) => {
-      if (data.resultCode === 0) {
-        dispatch(followSuccess(userId));
-      }
-      dispatch(toggleFollowingProgress(false, userId));
-    });
-  };
+  return async (dispatch) => {
+    // let apiMethod = followAPI.follow.bind(followAPI)
+    // let actionCreator = followSuccess
+    followUnfollowFlow(dispatch, userId, followAPI.follow.bind(followAPI), followSuccess)
+     };
 };
 export const unfollow = (userId) => {
-  return (dispatch) => {
-    dispatch(toggleFollowingProgress(true, userId));
-    followAPI.unfollow(userId).then((data) => {
-      if (data.resultCode === 0) {
-        dispatch(unfollowSuccess(userId));
-      }
-      dispatch(toggleFollowingProgress(false, userId));
-    });
+  return async (dispatch) => {
+    // let apiMethod = followAPI.unfollow.bind(followAPI)
+    // let actionCreator = unfollowSuccess
+    followUnfollowFlow(dispatch, userId, followAPI.unfollow.bind(followAPI), unfollowSuccess)
   };
 };
 
