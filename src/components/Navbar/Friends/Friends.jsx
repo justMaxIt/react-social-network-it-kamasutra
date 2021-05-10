@@ -5,7 +5,7 @@ import s from "./../Navbar.module.css";
 const Friends = (props) => {
 
   let friendsElements = props.state.map((f) => (
-    <Friend name={f.name} foto={f.foto} />
+    <Friend key={f.name} name={f.name} foto={f.foto} />
   ));
 
   return (
